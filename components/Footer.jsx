@@ -11,37 +11,70 @@ export default function Footer() {
           </div>
 
           <div className="mt-4 text-sm text-gray-500 flex gap-x-3 gap-y-2 flex-wrap">
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Overview
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Features
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Pricing
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Help
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Privacy
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Belajar
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Premium
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Iklan
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Privasi
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Ketentuan
             </Link>
-            <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+            <Link
+              className="hover:text-blue-500 hover:font-bold transition-all"
+              href={"/"}
+            >
               Contact
             </Link>
           </div>
@@ -49,23 +82,41 @@ export default function Footer() {
 
         {/* FORM FOOTER */}
         <div className="mt-10">
-          <p className="mb-3 font-medium text-gray-600 text-sm">Join Our Newsletter</p>
+          <p className="mb-3 font-medium text-gray-600 text-sm">
+            Join Our Newsletter
+          </p>
           <form>
-            <input required type="text" placeholder="Your email address" className="outline-none bg-transparent border border-blue-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
-            <button className="mt-1.5 w-full px-5 py-2.5 font-bold rounded bg-blue-500 text-white text-sm transition-all bg-gradient-to-br from-blue-500 to-blue-800">Subsribe</button>
+            <input
+              required
+              type="text"
+              placeholder="Your email address"
+              className="outline-none bg-transparent border border-blue-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+            <button className="mt-1.5 w-full px-5 py-2.5 font-bold rounded bg-blue-500 text-white text-sm transition-all bg-gradient-to-br from-blue-500 to-blue-800">
+              Subsribe
+            </button>
           </form>
         </div>
       </div>
 
       <div className="mt-12 flex flex-col gap-2">
         <div className="flex gap-3 text-sm text-gray-500 mx-auto">
-          <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+          <Link
+            className="hover:text-blue-500 hover:font-bold transition-all"
+            href={"/"}
+          >
             Terms
           </Link>
-          <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+          <Link
+            className="hover:text-blue-500 hover:font-bold transition-all"
+            href={"/"}
+          >
             Privacy
           </Link>
-          <Link className="hover:text-blue-500 hover:font-bold transition-all" href={"/"}>
+          <Link
+            className="hover:text-blue-500 hover:font-bold transition-all"
+            href={"/"}
+          >
             Cookies
           </Link>
         </div>

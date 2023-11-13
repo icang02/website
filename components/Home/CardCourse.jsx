@@ -40,7 +40,7 @@ export default function CardCourse({ APP_URL }) {
         ) : (
           data.map((item, i) => (
             <div className="col-span-12 md:col-span-4" key={i}>
-              <a
+              <Link
                 href={"/belajar/" + item.slug}
                 className="group block w-full aspect-video overflow-hidden rounded-xl"
               >
@@ -48,7 +48,7 @@ export default function CardCourse({ APP_URL }) {
                   className="w-full h-full bg-center bg-cover group-hover:scale-110 transition-all ease-out duration-500"
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
-              </a>
+              </Link>
 
               <div className="leading-6">
                 <div className="border-l-2 border-r-2 rounded border-gray-50">

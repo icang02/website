@@ -11,9 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="-mb-32">
         <NextTopLoader showSpinner={false} />
-        <AuthProvider>{children}</AuthProvider>/
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
