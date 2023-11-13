@@ -4,7 +4,7 @@ import Breadcrumb from "../Breadcrumb";
 import axios from "axios";
 import { useParams } from "next/navigation";
 
-export default function Detail({ APP_URL }) {
+export default function Detail() {
   const params = useParams();
   const { slug } = params;
 
@@ -13,7 +13,7 @@ export default function Detail({ APP_URL }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`${APP_URL}/api/courses/${slug}`);
+      const res = await axios.get(`${window.origin}/api/courses/${slug}`);
       const course = await res.data;
       setData(course);
       setLoading(false);

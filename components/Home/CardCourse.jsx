@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-export default function CardCourse({ APP_URL }) {
+export default function CardCourse() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getMateri() {
       try {
-        const res = await fetch(`${APP_URL}/api/courses`);
+        const res = await fetch(`${window.origin}/api/courses`);
         const resJson = await res.json();
         setData(resJson);
       } catch (error) {
