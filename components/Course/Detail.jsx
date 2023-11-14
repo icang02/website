@@ -3,26 +3,36 @@ import { useEffect, useState } from "react";
 import Breadcrumb from "../Breadcrumb";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Detail() {
   const params = useParams();
-  const { slug } = params;
+  const router = useRouter();
+  const { slug, part } = params;
 
-  const [data, setData] = useState({});
+  const [courses, setCourses] = useState({});
   const [loading, setLoading] = useState(true);
 
-  console.log(process.env.NODE_ENV);
+  const [selectPart, setSelectPart] = useState(part);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`${process.env.APP_URL}/api/courses/${slug}`);
-      const course = await res.data;
-      setData(course);
+      const res = await axios.get(
+        `${process.env.APP_URL}/api/courses/${slug}/1`
+      );
+      const courses = await res.data;
+      setCourses(courses);
       setLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [part]);
+
+  const handleSelectPart = (part) => {
+    setSelectPart(part);
+    router.push(`/belajar/${slug}/${part}`);
+  };
 
   return (
     <>
@@ -33,33 +43,35 @@ export default function Detail() {
           </div>
         ) : (
           <>
-            <Breadcrumb title={data.title} />
+            <Breadcrumb title={courses.title} />
             <div className="mt-5">
               <img
-                src={data.image}
+                src={courses.image}
                 alt="image.jpg"
                 className="w-full aspect-video object-cover object-center rounded-xl"
               />
 
-              <h6 className="font-bold leading-6 mt-5">{data.title}</h6>
+              <h6 className="font-bold leading-6 mt-5">{courses.title}</h6>
               <p className="mt-5 text-sm text-p leading-6">
-                {data.description}
+                {courses.description}
               </p>
               <h6 className="mt-5 font-bold text-gray-800">Daftar materi</h6>
 
               <div className="mt-3 flex flex-col gap-1">
-                {/* {subMateri.map((item, i) => (
-              <div
-              onClick={() => handleSelectedItem(i)}
-              key={i}
-              className={`${selectedItem == i && "!bg-blue-500 text-white"} w-full bg-[#F3F4F6] border border-blue-200 rounded px-4 py-2.5 text-sm text-p transition-all ease-in-out text-gray-600`}
-              >
-                {item}
-              </div>
-            ))} */}
+                {courses.course_part.map((item, i) => (
+                  <div
+                    onClick={() => handleSelectPart(item.order)}
+                    key={i}
+                    className={`${
+                      selectPart == item.order && "!bg-blue-500 text-white"
+                    } cursor-pointer w-full bg-[#F3F4F6] border border-blue-200 rounded px-4 py-2.5 text-sm text-p transition-all ease-in-out text-gray-600`}
+                  >
+                    {item.title}
+                  </div>
+                ))}
               </div>
               <div className="mt-5">
-                {/* {materi.find(item => item.title === 'Pendahuluan').content} */}
+                {courses.course_part[part - 1].content}
 
                 {/* {contentMateri && (
               <div className="mt-4">

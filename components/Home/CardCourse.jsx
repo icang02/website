@@ -41,7 +41,7 @@ export default function CardCourse() {
           data.map((item, i) => (
             <div className="col-span-12 md:col-span-4" key={i}>
               <Link
-                href={"/belajar/" + item.slug}
+                href={`/belajar/${item.slug}/1`}
                 className="group block w-full aspect-video overflow-hidden rounded-xl"
               >
                 <div
