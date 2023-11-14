@@ -11,9 +11,11 @@ export default function Detail() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
 
+  console.log(process.env.NODE_ENV);
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`${window.origin}/api/courses/${slug}`);
+      const res = await axios.get(`${process.env.APP_URL}/api/courses/${slug}`);
       const course = await res.data;
       setData(course);
       setLoading(false);

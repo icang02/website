@@ -11,7 +11,7 @@ export default function CardCourse() {
   useEffect(() => {
     async function getMateri() {
       try {
-        const res = await fetch(`${window.origin}/api/courses`);
+        const res = await fetch(`${process.env.APP_URL}/api/courses`);
         const resJson = await res.json();
         setData(resJson);
       } catch (error) {
