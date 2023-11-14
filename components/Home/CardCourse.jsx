@@ -45,7 +45,7 @@ export default function CardCourse() {
                 className="group block w-full aspect-video overflow-hidden rounded-xl"
               >
                 <div
-                  className="w-full h-full bg-center bg-cover group-hover:scale-110 transition-all ease-out duration-500"
+                  className="w-full h-full bg-center bg-cover group-hover:scale-105 transition-all ease-out duration-500"
                   style={{ backgroundImage: `url(${item.image})` }}
                 ></div>
               </Link>
@@ -64,11 +64,11 @@ export default function CardCourse() {
 
                 <div className="px-1 flex items-center justify-between mt-5">
                   <div className="border border-blue-500 text-blue-500 rounded px-3 py-1 text-xs font-semibold">
-                    2 Bagian
+                    {item.course_part.length} Bagian
                   </div>
 
                   <Link
-                    href={`belajar/${item.slug}`}
+                    href={`/belajar/${item.slug}/1`}
                     className="flex items-center gap-1 text-gray-800 text-sm font-semibold hover:text-blue-500"
                   >
                     <span>Mulai Belajar</span>

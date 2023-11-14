@@ -59,19 +59,29 @@ export default function Detail() {
 
               <div className="mt-3 flex flex-col gap-1">
                 {courses.course_part.map((item, i) => (
-                  <div
-                    onClick={() => handleSelectPart(item.order)}
+                  <Link
+                    href={`/belajar/${slug}/${item.order}`}
                     key={i}
                     className={`${
                       selectPart == item.order && "!bg-blue-500 text-white"
-                    } cursor-pointer w-full bg-[#F3F4F6] border border-blue-200 rounded px-4 py-2.5 text-sm text-p transition-all ease-in-out text-gray-600`}
+                    } cursor-pointer w-full bg-[#F3F4F6] border border-blue-200 rounded px-4 py-2.5 text-sm text-p transition-all ease-in-out text-gray-600 hover:bg-blue-400 hover:text-white`}
                   >
                     {item.title}
-                  </div>
+                  </Link>
                 ))}
               </div>
               <div className="mt-5">
-                {courses.course_part[part - 1].content}
+                <div className="text-sm">
+                  {/* Selamat belajar. semoga bermanfaat. */}
+                  {courses.course_part[part - 1].content}
+                </div>
+
+                <div
+                  className="mt-3"
+                  dangerouslySetInnerHTML={{
+                    __html: "<h1>Content Course Part</h1>",
+                  }}
+                />
 
                 {/* {contentMateri && (
               <div className="mt-4">
