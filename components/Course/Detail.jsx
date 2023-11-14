@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import parse from "html-react-parser";
 
 export default function Detail() {
   const params = useParams();
@@ -18,9 +19,7 @@ export default function Detail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(
-        `${process.env.APP_URL}/api/courses/${slug}/1`
-      );
+      const res = await axios.get(`${process.env.APP_URL}/api/courses/${slug}`);
       const courses = await res.data;
       setCourses(courses);
       setLoading(false);
@@ -28,11 +27,6 @@ export default function Detail() {
 
     fetchData();
   }, [part]);
-
-  const handleSelectPart = (part) => {
-    setSelectPart(part);
-    router.push(`/belajar/${slug}/${part}`);
-  };
 
   return (
     <>
@@ -72,16 +66,8 @@ export default function Detail() {
               </div>
               <div className="mt-5">
                 <div className="text-sm">
-                  {/* Selamat belajar. semoga bermanfaat. */}
-                  {courses.course_part[part - 1].content}
+                  {parse(courses.course_part[part - 1].content)}
                 </div>
-
-                <div
-                  className="mt-3"
-                  dangerouslySetInnerHTML={{
-                    __html: "<h1>Content Course Part</h1>",
-                  }}
-                />
 
                 {/* {contentMateri && (
               <div className="mt-4">

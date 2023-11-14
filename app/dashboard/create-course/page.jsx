@@ -1,4 +1,4 @@
-import Card from "@/components/Dashboard/Card";
+import Froala from "@/components/Froala";
 
 export const metadata = {
   title: "Inti Kode | Dashboard",
@@ -7,7 +7,7 @@ export const metadata = {
 export default function Dashboard() {
   return (
     <>
-      <Card />
+      <Froala />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Froala from "../Froala";
 
 export default function Card() {
   const router = useRouter();
@@ -44,15 +45,25 @@ export default function Card() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button
-            onClick={onLogout}
-            disabled={loading}
-            className={`px-4 py-2 text-white bg-blue-500 ${
-              loading ? "opacity-80" : "hover:bg-blue-600"
-            } text-xs transition-all duration-300 focus:ring-2 focus:outline-none font-medium rounded`}
-          >
-            Logout
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={onLogout}
+              disabled={loading}
+              className={`px-4 py-2 text-white bg-blue-500 ${
+                loading ? "opacity-80" : "hover:bg-blue-600"
+              } text-xs transition-all duration-300 focus:ring-2 focus:outline-none font-medium rounded`}
+            >
+              Logout
+            </button>
+            <Link
+              href={"/dashboard/create-course"}
+              className={`px-4 py-2 text-white bg-blue-500 ${
+                loading ? "opacity-80" : "hover:bg-blue-600"
+              } text-xs transition-all duration-300 focus:ring-2 focus:outline-none font-medium rounded`}
+            >
+              Create
+            </Link>
+          </div>
           <div className="flex flex-col gap-1 w-full">
             <div className="h-1 rounded bg-[#fde5a7] border"></div>
             <div className="h-1 rounded bg-[#fde5a7] border"></div>

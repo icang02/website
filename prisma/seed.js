@@ -4,8 +4,9 @@ const slugify = require("slugify");
 const prisma = new PrismaClient();
 
 async function main() {
-  // await prisma.$executeRawUnsafe("TRUNCATE TABLE users CASCASE");
-  // await prisma.$executeRawUnsafe("TRUNCATE TABLE courses CASCASE");
+  // await prisma.users.deleteMany();
+  // await prisma.courses.deleteMany();
+  // await prisma.course_part.deleteMany();
 
   const users = await prisma.users.createMany({
     data: [
