@@ -29,7 +29,7 @@ model courses {
 model course_part {
   id         Int     @id @default(autoincrement())
   order      Int
-  courses    courses @relation(fields: [courses_id], references: [id])
+  courses    courses @relation(fields: [courses_id], references: [id], onDelete: Cascade)
   courses_id Int
   title      String
   content    String

@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Breadcrumb from "../Breadcrumb";
 import { useParams } from "next/navigation";
-import Link from "next/link";
 import parse from "html-react-parser";
 
 export default function Detail() {
@@ -102,7 +101,7 @@ export default function Detail() {
                   {loading2 ? (
                     <div className="text-center">Loading content...</div>
                   ) : (
-                    coursePart.content
+                    parse(coursePart.content)
                   )}
                 </div>
 
