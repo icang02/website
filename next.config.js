@@ -5,7 +5,7 @@ const nextConfig = {
     APP_URL:
       process.env.NODE_ENV == "development"
         ? "http://127.0.0.1:3000"
-        : "https://intikode.vercel.app",
+        : "https://codingpoint.vercel.app",
   },
   async headers() {
     return [
