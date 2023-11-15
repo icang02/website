@@ -1,28 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
 import Breadcrumb from "../Breadcrumb";
-import axios from "axios";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import parse from "html-react-parser";
 
 export default function Detail() {
   const params = useParams();
-  const router = useRouter();
   const { slug, part } = params;
 
   const [courses, setCourses] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const [selectPart, setSelectPart] = useState(part);
-
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`${process.env.APP_URL}/api/courses/${slug}`);
-      const courses = await res.data;
-      setCourses(courses);
-      setLoading(false);
+      try {
+        const res = await fetch(`${process.env.APP_URL}/api/courses/${slug}`);
+        const courses = await res.json();
+        setCourses(courses);
+      } catch (error) {
+        console.log("Error info : " + error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
@@ -57,7 +58,7 @@ export default function Detail() {
                     href={`/belajar/${slug}/${item.order}`}
                     key={i}
                     className={`${
-                      selectPart == item.order && "!bg-blue-500 text-white"
+                      part == item.order && "!bg-blue-500 text-white"
                     } cursor-pointer w-full bg-[#F3F4F6] border border-blue-200 rounded px-4 py-2.5 text-sm text-p transition-all ease-in-out text-gray-600 hover:bg-blue-400 hover:text-white`}
                   >
                     {item.title}

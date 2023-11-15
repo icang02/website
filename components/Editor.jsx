@@ -53,7 +53,7 @@ const Editor = () => {
   });
 
   return (
-    <div className="py-14 px-1 md:px-60">
+    <div className="py-14 px-1.5 md:px-60">
       <div className="flex items-center justify-center mb-3 gap-1">
         <Link
           href={"/"}

@@ -12,8 +12,8 @@ export default function CardCourse() {
     async function getMateri() {
       try {
         const res = await fetch(`${process.env.APP_URL}/api/courses`);
-        const resJson = await res.json();
-        setData(resJson);
+        const courses = await res.json();
+        setData(courses);
       } catch (error) {
         console.log(error);
       } finally {
