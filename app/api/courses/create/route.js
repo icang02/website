@@ -5,24 +5,25 @@ const prisma = new PrismaClient();
 
 export async function POST(request) {
   const reqBody = await request.json();
-  const { title, description, image, content } = reqBody;
+  const { title, description, title2, order, content } = reqBody;
 
   const course = await prisma.courses.create({
     data: {
       title: title,
-      slug: slugify(title),
+      slug: slugify(title, { lower: true }),
       description: description,
-      image: image,
+      image:
+        "https://mdevelopers.com/storage/0_what-is-framework_82ae357f.webp",
     },
   });
   const course_part = await prisma.course_part.create({
     data: {
-      order: 1,
+      order: order,
       courses_id: course.id,
-      title: "Pendahuluan",
+      title: title2,
       content: content,
     },
   });
 
-  return NextResponse.json(course, course_part);
+  return NextResponse.json({ course, course_part });
 }
