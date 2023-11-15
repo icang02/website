@@ -21,7 +21,7 @@ export default function Detail() {
         const courses = await res.json();
         setCourses(courses);
 
-        console.log("api pertama dipanggil");
+        // console.log("api pertama dipanggil");
       } catch (error) {
         console.log("Error info : " + error);
       } finally {
@@ -52,7 +52,7 @@ export default function Detail() {
 
     if (courses.id && part) {
       fetchPartData();
-      console.log("api kedua dipanggil");
+      // console.log("api kedua dipanggil");
     }
   }, [courses.id, part]);
 

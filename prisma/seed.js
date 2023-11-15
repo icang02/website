@@ -58,20 +58,26 @@ async function main() {
       {
         courses_id: 1,
         order: 1,
-        title: "Pendahuluan",
-        content: "Selamat belajar. Semoga bermanfaat.",
-      },
-      {
-        courses_id: 1,
-        order: 2,
         title: "Persiapan Project dan Instalasi Laravel",
         content: "Persiapan Project dan Instalasi Laravel.",
       },
       {
+        courses_id: 1,
+        order: 2,
+        title: "Lorem ipsum dolorem si lorem",
+        content: "Lorem ipsum dolorem si lorem.",
+      },
+      {
         courses_id: 2,
         order: 1,
-        title: "Pendahuluan",
-        content: "Selamat belajar. Semoga bermanfaat.",
+        title: "Instalasi Tailwind",
+        content: "Instalasi tailwind..",
+      },
+      {
+        courses_id: 2,
+        order: 2,
+        title: "Lorem ipsum dolorem si lorem",
+        content: "Lorem ipsum dolorem si lorem.",
       },
     ],
   });
