@@ -12,8 +12,7 @@ export async function POST(request) {
       title: title,
       slug: slugify(title, { lower: true }),
       description: description,
-      image:
-        "https://mdevelopers.com/storage/0_what-is-framework_82ae357f.webp",
+      image: "https://mdevelopers.com/storage/0_what-is-framework_82ae357f.webp",
     },
   });
   const course_part = await prisma.course_part.create({
@@ -24,6 +23,8 @@ export async function POST(request) {
       content: content,
     },
   });
+  await prisma.$disconnect();
+  
 
   return NextResponse.json({ course, course_part });
 }

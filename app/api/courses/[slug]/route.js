@@ -22,6 +22,7 @@ export async function GET(req, context) {
       },
     },
   });
+  await prisma.$disconnect()
 
   return NextResponse.json(courses);
 }
