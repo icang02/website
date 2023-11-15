@@ -1,7 +1,8 @@
 "use client";
+import dynamic from "next/dynamic";
 import axios from "axios";
 import { useFormik } from "formik";
-import JoditEditor from "jodit-react";
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 import Link from "next/link";
 import { useState } from "react";
 import * as Yup from "yup";
@@ -24,7 +25,7 @@ const Editor = () => {
       title2: Yup.string().required("Fields is required"),
       order: Yup.string().required("Fields is required"),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
       const data = {
         title: values.title,
         description: values.description,
@@ -42,7 +43,7 @@ const Editor = () => {
         );
         console.log(res.data);
         alert("Create post success");
-        formik.handleReset;
+        resetForm();
       } catch (error) {
         console.log("Error info : " + error);
       } finally {
