@@ -104,6 +104,12 @@ export default function TableCourses() {
                   <td className="px-6 py-4 text-center">{item.course_part.length}</td>
                   <td className="px-6 py-4 flex gap-0 flex-col md:gap-1 md:flex-row items-center justify-center">
                     <Link
+                      className={`mb-3 inline-block px-4 py-2 text-white bg-yellow-600 hover:bg-yellow-700 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
+                      href={`/dashboard/courses/edit/${item.id}`}
+                    >
+                      Edit
+                    </Link>
+                    <Link
                       className={`mb-3 inline-block px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
                       href={`/dashboard/courses/${item.id}`}
                     >
