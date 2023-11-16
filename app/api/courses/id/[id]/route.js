@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 export async function GET(req, context) {
   const { id } = context.params;
 
@@ -17,15 +17,17 @@ export async function GET(req, context) {
           order: "asc",
         },
         select: {
+          id: true,
           order: true,
           title: true,
-          content: true
+          content: true,
         },
       },
     },
   });
-  // console.log(courses)
-  await prisma.$disconnect()
+  await prisma.$disconnect();
+
+  if (courses.course_part.length == 0) courses.course_part = null;
 
   return NextResponse.json(courses);
 }

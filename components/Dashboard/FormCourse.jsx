@@ -8,12 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "next/navigation";
 import axios from "axios";
 
-export default function FormCourse() {
+export default function FormCourse({ setReload }) {
   const params = useParams();
   const { id } = params;
 
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // HANDLE LOGIN FORM
   const formik = useFormik({
@@ -25,7 +25,7 @@ export default function FormCourse() {
       title: Yup.string().required("Fields is required"),
       order: Yup.string().required("Fields is required"),
     }),
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       const data = {
         courses_id: id,
         title: values.title,
@@ -34,17 +34,15 @@ export default function FormCourse() {
       };
 
       try {
-        setLoading(true);
         await axios.post(`${process.env.APP_URL}/api/courses/id/${id}/create`, data);
-
         toast("Berhasil menambahkan data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
-        resetForm();
+
+        formik.resetForm();
         setContent("");
+        setReload(prev => !prev);
       } catch (error) {
         console.log("Error info : " + error);
         toast("Gagal menambahkan", { type: "error", hideProgressBar: true, transition: Slide, autoClose: 3000 });
-      } finally {
-        setLoading(false);
       }
     },
   });
@@ -62,8 +60,7 @@ export default function FormCourse() {
           id="title"
           className="bg-gray-50 border border-gray-300 outline-none text-gray-600 sm:text-sm focus:border-blue-500 rounded-lg block w-full p-2.5"
           placeholder="Write some title course part"
-          value={formik.values.title}
-          onChange={formik.handleChange}
+          {...formik.getFieldProps("title")}
         />
         {formik.errors.title && formik.touched.title && <p className="text-red-500 text-xs mt-1 ">{formik.errors.title}</p>}
       </div>
@@ -78,8 +75,7 @@ export default function FormCourse() {
           id="order"
           className="bg-gray-50 border border-gray-300 outline-none text-gray-600 sm:text-sm focus:border-blue-500 rounded-lg block w-full p-2.5"
           placeholder="Number of order part course"
-          value={formik.values.order}
-          onChange={formik.handleChange}
+          {...formik.getFieldProps("order")}
         />
         {formik.errors.order && formik.touched.order && <p className="text-red-500 text-xs mt-1 ">{formik.errors.order}</p>}
       </div>
@@ -91,18 +87,20 @@ export default function FormCourse() {
       <div className="flex items-center gap-1">
         <button
           type="submit"
-          disabled={loading}
-          className={`${loading ? "opacity-80 cursor-not-allowed" : "hover:bg-blue-600"} text-sm md:text-base mt-3 bg-blue-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
+          disabled={formik.isSubmitting}
+          className={`${formik.isSubmitting ? "opacity-80 cursor-not-allowed" : "hover:bg-blue-600"} text-sm md:text-base mt-3 bg-blue-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
         >
           Add Part
         </button>
-        <div
-          disabled={loading}
+        <button
+          disabled={formik.isSubmitting}
           onClick={formik.handleReset}
-          className={`${loading ? "opacity-80 cursor-not-allowed" : "hover:bg-gray-600"} text-sm md:text-base mt-3 bg-gray-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
+          className={`${
+            formik.isSubmitting ? "opacity-80 !cursor-not-allowed" : "hover:bg-gray-600"
+          } cursor-pointer text-sm md:text-base mt-3 bg-gray-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
         >
           Clear
-        </div>
+        </button>
       </div>
     </form>
   );

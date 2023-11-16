@@ -37,6 +37,8 @@ export default function CardCourse() {
       <div className="grid grid-cols-12 gap-y-10 md:gap-12">
         {loading ? (
           <div className="col-span-12 text-sm text-center">Loading data...</div>
+        ) : data.length == 0 ? (
+          <div className="col-span-12 text-sm text-center">Belum ada course tersedia.</div>
         ) : (
           data.map((item, i) => (
             item.course_part.length > 0 && (
@@ -83,7 +85,7 @@ export default function CardCourse() {
         )}
       </div>
 
-      {!loading && (
+      {!loading && data.length != 0 && (
         <div className="mt-5 flex justify-end">
           <a
             href={"/"}

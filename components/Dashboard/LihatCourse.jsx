@@ -4,41 +4,44 @@ import { useEffect, useState } from "react";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormCourse from "./FormCourse";
+import { useParams } from "next/navigation";
 
 export default function LihatCourse() {
+  const params = useParams();
+  const { id } = params;
+
+  const [reload, setReload] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [btnLoading, setBtnLoading] = useState(false);
 
   const fetchCourses = async () => {
     setLoading(true);
-    const res = await fetch(`${process.env.APP_URL}/api/courses/id/54`);
+    const res = await fetch(`${process.env.APP_URL}/api/courses/id/${id}`);
     const courses = await res.json();
     setLoading(false);
     setData(courses);
-    // console.log(courses)
   };
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+  }, [reload]);
 
-  // const deleteCourse = async (id) => {
-  //   try {
-  //     setBtnLoading(true);
+  const deleteCoursePart = async (id) => {
+    try {
+      setBtnLoading(true);
 
-  //     const res = await fetch(`${process.env.APP_URL}/api/courses/delete/${id}`);
-  //     const courseDeleted = await res.json();
-  //     console.log(courseDeleted.msg);
+      const res = await fetch(`${process.env.APP_URL}/api/courses/id/${id}/delete`);
+      // const courseDelete = await res.json();
 
-  //     fetchCourses();
-  //     toast("Berhasil dihapus!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
-  //   } catch (error) {
-  //     console.error("Error deleting :", error);
-  //   } finally {
-  //     setBtnLoading(false);
-  //   }
-  // };
+      fetchCourses();
+      toast("Berhasil dihapus!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
+    } catch (error) {
+      console.error("Error deleting :", error);
+    } finally {
+      setBtnLoading(false);
+    }
+  };
 
   return (
     <div className="px-3 md:px-44 pt-16 pb-20">
@@ -55,7 +58,7 @@ export default function LihatCourse() {
 
       <div className="grid grid-cols-12 gap-8">
         <div className="col-span-12 md:col-span-6">
-          <FormCourse />
+          <FormCourse setReload={setReload} />
 
           <div className="block md:hidden w-full mt-10 bg-gray-100 h-1"></div>
         </div>
@@ -82,7 +85,7 @@ export default function LihatCourse() {
                       Loading data...
                     </td>
                   </tr>
-                ) : data.course_part.length == 0 ? (
+                ) : data.course_part == null ? (
                   <tr className="text-center">
                     <td className="px-6 py-4" colSpan={3}>
                       Belum ada data.
@@ -100,6 +103,13 @@ export default function LihatCourse() {
                           className={`mb-3 inline-block px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
                         >
                           Lihat
+                        </button>
+                        <button
+                        disabled={btnLoading} 
+                        onClick={() =>deleteCoursePart(item.id)}
+                          className={`${btnLoading && '!opacity-80 !hover:bg-red-600'} mb-3 inline-block px-4 py-2 text-white bg-red-600 hover:bg-red-700 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
+                        >
+                          Hapus
                         </button>
                       </td>
                     </tr>
