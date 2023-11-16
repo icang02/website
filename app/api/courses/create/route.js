@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import slugify from "slugify";
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic';
 export async function POST(request) {
   const reqBody = await request.json();
   const { title, description, title2, order, content } = reqBody;
