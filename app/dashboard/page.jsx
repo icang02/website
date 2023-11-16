@@ -1,7 +1,7 @@
 import Card from "@/components/Dashboard/Card";
 
 export const metadata = {
-  title: "Inti Kode | Dashboard",
+  title: `${process.env.APP_NAME} | Dashboard`,
 };
 
 export default function Dashboard() {

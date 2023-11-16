@@ -18,6 +18,7 @@ export async function GET(req, context) {
         select: {
           order: true,
           title: true,
+          // content: true,
         },
       },
     },

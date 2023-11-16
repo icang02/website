@@ -55,12 +55,12 @@ export default function Card() {
               Logout
             </button>
             <Link
-              href={"/dashboard/create-course"}
+              href={"/dashboard/courses"}
               className={`px-4 py-2 text-white bg-blue-500 ${
                 loading ? "opacity-80" : "hover:bg-blue-600"
               } text-xs transition-all duration-300 focus:ring-2 focus:outline-none font-medium rounded`}
             >
-              Create
+              Courses
             </Link>
           </div>
           <div className="flex flex-col gap-1 w-full">

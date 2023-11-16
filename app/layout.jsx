@@ -3,7 +3,7 @@ import NextTopLoader from "nextjs-toploader";
 import { AuthProvider } from "./providers";
 
 export const metadata = {
-  title: "Inti Kode",
+  title: process.env.APP_NAME,
   description:
     "Platform koding dengan implementasi kode secara langsung! Beragam tutorial interaktif dan proyek praktis yang dirancang untuk membawa Anda melalui implementasi kode tanpa membebani dengan teori yang berlebihan.",
 };

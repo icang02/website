@@ -24,15 +24,15 @@ export default function LoginForm() {
     }),
     onSubmit: async (values) => {
       try {
+        
         setLoading(true);
 
         const res = await signIn("credentials", {
+
           email: values.email,
           password: values.password,
           redirect: false,
         });
-
-        console.log(res)
 
         if (!res) {
           setError("Invalid credentials.");
@@ -51,9 +51,6 @@ export default function LoginForm() {
       } catch (error) {
         setError("An error occurred. Please try again.");
         setLoading(false);
-        console.log(error)
-      } finally {
-        setLoading(false)
       }
     },
   });

@@ -41,7 +41,7 @@ export default function CardCourse() {
           data.map((item, i) => (
             <div className="col-span-12 md:col-span-4" key={i}>
               <Link
-                href={`/belajar/${item.slug}/1`}
+                href={`/belajar/${item.slug}`}
                 className="group block w-full aspect-video overflow-hidden rounded-xl"
               >
                 <div
@@ -68,7 +68,7 @@ export default function CardCourse() {
                   </div>
 
                   <Link
-                    href={`/belajar/${item.slug}/1`}
+                    href={`/belajar/${item.slug}`}
                     className="flex items-center gap-1 text-gray-800 text-sm font-semibold hover:text-blue-500"
                   >
                     <span>Mulai Belajar</span>
