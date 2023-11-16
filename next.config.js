@@ -5,7 +5,7 @@ const nextConfig = {
     APP_URL:
       process.env.NODE_ENV == "development"
         ? "http://localhost:3000"
-        : "https://ilmifaizan.web.id",
+        : "https://codingpoint.vercel.app",
   },
   async headers() {
     return [
