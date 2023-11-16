@@ -40,13 +40,13 @@ const Editor = () => {
         setLoading(true);
 
         await axios.post(`${process.env.APP_URL}/api/courses/create`, data);
-        toast("Berhasil menambahkan data!", { hideProgressBar: true, transition: Slide });
+        toast("Berhasil menambahkan data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
 
         resetForm();
         setContent("");
       } catch (error) {
         console.log("Error info : " + error);
-        toast("Berhasil dihapus!", { type: "error", hideProgressBar: true, transition: Slide });
+        toast("Gagal menambahkan", { type: "error", hideProgressBar: true, transition: Slide, autoClose: 3000 });
       } finally {
         setLoading(false);
       }
@@ -147,7 +147,7 @@ const Editor = () => {
             Create Course
           </button>
           <button
-            onClick={formik.handleReset}
+            onClick={loading ? "" : formik.handleReset}
             className={`${loading ? "opacity-80 cursor-not-allowed" : "hover:bg-gray-600"} text-sm md:text-base mt-3 bg-gray-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
           >
             Clear

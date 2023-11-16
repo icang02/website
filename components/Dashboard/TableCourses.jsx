@@ -10,6 +10,7 @@ export default function TableCourses() {
   const [btnLoading, setBtnLoading] = useState(false);
 
   const fetchCourses = async () => {
+    setLoading(true);
     const res = await fetch(`${process.env.APP_URL}/api/courses`);
     const courses = await res.json();
     setLoading(false);
@@ -29,7 +30,7 @@ export default function TableCourses() {
       console.log(courseDeleted.msg);
 
       fetchCourses();
-      toast("Berhasil dihapus!", { hideProgressBar: true, transition: Slide });
+      toast("Berhasil dihapus!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
     } catch (error) {
       console.error("Error deleting :", error);
     } finally {
