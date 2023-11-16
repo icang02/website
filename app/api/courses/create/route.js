@@ -6,26 +6,26 @@ const prisma = new PrismaClient();
 export const dynamic = 'force-dynamic';
 export async function POST(request) {
   const reqBody = await request.json();
-  const { title, description, title2, order, content } = reqBody;
+  const { title, description, image } = reqBody;
 
   const course = await prisma.courses.create({
     data: {
       title: title,
       slug: slugify(title, { lower: true }),
       description: description,
-      image: "https://mdevelopers.com/storage/0_what-is-framework_82ae357f.webp",
+      image: image,
     },
   });
-  const course_part = await prisma.course_part.create({
-    data: {
-      order: order,
-      courses_id: course.id,
-      title: title2,
-      content: content,
-    },
-  });
+  // const course_part = await prisma.course_part.create({
+  //   data: {
+  //     order: order,
+  //     courses_id: course.id,
+  //     title: title2,
+  //     content: content,
+  //   },
+  // });
   await prisma.$disconnect();
   
 
-  return NextResponse.json({ course, course_part });
+  return NextResponse.json({ course });
 }

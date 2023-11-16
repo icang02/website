@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata = {
-  title: "Inti Kode | Course",
+  title: process.env.APP_NAME +  " | Course",
 };
 
 export default function CourseDetail() {

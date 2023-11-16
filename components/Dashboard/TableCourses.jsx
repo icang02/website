@@ -39,7 +39,7 @@ export default function TableCourses() {
   };
 
   return (
-    <div className="px-3 md:px-44 mt-20">
+    <div className="px-3 md:px-44 pt-16 pb-20">
       <ToastContainer />
 
       <div className="flex item-center gap-1">
@@ -70,7 +70,10 @@ export default function TableCourses() {
               <th scope="col" className="px-6 py-3">
                 Deskripsi
               </th>
-              <th scope="col" className="px-6 py-3 rounded-e-lg">
+              <th scope="col" className="px-6 py-3 text-center">
+                Jumlah Part
+              </th>
+              <th scope="col" className="px-6 py-3 text-center rounded-e-lg">
                 Aksi
               </th>
             </tr>
@@ -78,13 +81,13 @@ export default function TableCourses() {
           <tbody>
             {loading ? (
               <tr className="text-center">
-                <td className="px-6 py-4" colSpan={4}>
+                <td className="px-6 py-4" colSpan={5}>
                   Loading data...
                 </td>
               </tr>
             ) : data.length == 0 ? (
               <tr className="text-center">
-                <td className="px-6 py-4" colSpan={4}>
+                <td className="px-6 py-4" colSpan={5}>
                   Belum ada data.
                 </td>
               </tr>
@@ -98,14 +101,16 @@ export default function TableCourses() {
                     {item.title}
                   </th>
                   <td className="px-6 py-4">{item.description}</td>
-                  <td className="px-6 py-4 flex gap-0 flex-col md:gap-1 md:flex-row items-center">
+                  <td className="px-6 py-4 text-center">{item.course_part.length}</td>
+                  <td className="px-6 py-4 flex gap-0 flex-col md:gap-1 md:flex-row items-center justify-center">
                     <Link
-                      className={`mb-3 inline-block px-4 py-2 text-white bg-yellow-500 hover:bg-yellow-600 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
-                      href={`/dashboard/courses/edit/${item.id}`}
+                      className={`mb-3 inline-block px-4 py-2 text-white bg-teal-600 hover:bg-teal-700 text-xs transition-all duration-300 focus:outline-none font-medium rounded md:text-xs`}
+                      href={`/dashboard/courses/${item.id}`}
                     >
-                      Edit
+                      Lihat
                     </Link>
                     <button
+                    disabled={btnLoading}
                       onClick={() => deleteCourse(item.id)}
                       className={`${
                         btnLoading && "opacity-80 !hover:bg-red-500"

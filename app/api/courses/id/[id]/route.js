@@ -5,11 +5,11 @@ const prisma = new PrismaClient();
 
 export const dynamic = 'force-dynamic';
 export async function GET(req, context) {
-  const { slug } = context.params;
+  const { id } = context.params;
 
   const courses = await prisma.courses.findFirst({
     where: {
-      slug: slug,
+      id: parseInt(id),
     },
     include: {
       course_part: {
@@ -19,10 +19,12 @@ export async function GET(req, context) {
         select: {
           order: true,
           title: true,
+          content: true
         },
       },
     },
   });
+  // console.log(courses)
   await prisma.$disconnect()
 
   return NextResponse.json(courses);

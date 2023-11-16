@@ -39,7 +39,8 @@ export default function CardCourse() {
           <div className="col-span-12 text-sm text-center">Loading data...</div>
         ) : (
           data.map((item, i) => (
-            <div className="col-span-12 md:col-span-4" key={i}>
+            item.course_part.length > 0 && (
+              <div className="col-span-12 md:col-span-4" key={i}>
               <Link
                 href={`/belajar/${item.slug}`}
                 className="group block w-full aspect-video overflow-hidden rounded-xl"
@@ -77,6 +78,7 @@ export default function CardCourse() {
                 </div>
               </div>
             </div>
+            )
           ))
         )}
       </div>
