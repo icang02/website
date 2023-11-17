@@ -19,7 +19,7 @@ model courses {
   id          Int           @id @default(autoincrement())
   title       String
   slug        String
-  description String
+  description String @db.Text
   image       String
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
@@ -32,5 +32,5 @@ model course_part {
   courses    courses @relation(fields: [courses_id], references: [id], onDelete: Cascade)
   courses_id Int
   title      String
-  content    String
+  content    String @db.Text
 }

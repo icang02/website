@@ -56,7 +56,7 @@ export default function LihatCourse() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-12">
         <div className="col-span-12 md:col-span-6">
           <FormCourse setReload={setReload} />
 

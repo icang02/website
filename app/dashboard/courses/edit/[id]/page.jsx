@@ -1,7 +1,7 @@
 import EditCourse from "@/components/Dashboard/EditCourse";
 
 export const metadata = {
-  title: "Inti Kode | Edit Course",
+  title: process.env.APP_NAME + " | Edit Course",
 };
 
 export default function DashbordEditCourse() {
