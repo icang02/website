@@ -7,7 +7,7 @@
     @apply border border-red-500;
   }
   .text-p {
-    @apply text-gray-500 font-medium;
+    @apply text-gray-600 font-medium;
   }
 }
 

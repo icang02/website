@@ -11,6 +11,18 @@ export default function PartDetail({ courses }) {
     setPart(order);
   };
 
+  // next materi selanjutnya
+  const handleNextMateri = () => {
+    setPart(part + 1);
+    window.scrollTo(0, 0);
+  };
+
+  // prev materi sebelumnya
+  const handlePrevMateri = () => {
+    setPart(part - 1);
+    window.scrollTo(0, 0);
+  };
+
   // use effect function
   useEffect(() => {
     const fetchPartData = async () => {
@@ -44,7 +56,29 @@ export default function PartDetail({ courses }) {
       </div>
 
       <div className="mt-7 text-p">
-        {parse(coursePart.title ?? courses.course_part[0].title)}
+        <div className="text-sm">
+          {parse(coursePart.title ?? courses.course_part[0].title)}
+        </div>
+
+        <div className="mt-6 flex justify-end">
+          {part != 1 && (
+            <button
+              onClick={handlePrevMateri}
+              className="text-sm inline-flex items-center gap-1 text-gray-600 bg-white border border-gray-300 focus:outline-none font-medium rounded-lg px-5 py-2.5 me-2 mb-2 transition-all"
+            >
+              Materi sebelumnya
+            </button>
+          )}
+
+          {part != courses.course_part.length && (
+            <button
+              onClick={handleNextMateri}
+              className="text-sm inline-flex items-center gap-1 text-gray-600 bg-white border border-gray-300 focus:outline-none font-medium rounded-lg px-5 py-2.5 me-2 mb-2 transition-all"
+            >
+              Materi selanjutnya
+            </button>
+          )}
+        </div>
       </div>
     </>
   );
