@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="-mb-32">
+      <body className="font-poppins">
         <NextTopLoader showSpinner={false} />
         <AuthProvider>{children}</AuthProvider>
       </body>

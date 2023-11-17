@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +9,7 @@
     @apply border border-red-500;
   }
   .text-p {
-    @apply text-gray-600 font-medium;
+    @apply text-gray-500 font-medium;
   }
 }
 
@@ -15,6 +17,6 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.no-scrollbar::-webkit-scrollbar { 
-  display: none; 
-} 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
