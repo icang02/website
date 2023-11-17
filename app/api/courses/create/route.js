@@ -16,14 +16,6 @@ export async function POST(request) {
       image: image,
     },
   });
-  // const course_part = await prisma.course_part.create({
-  //   data: {
-  //     order: order,
-  //     courses_id: course.id,
-  //     title: title2,
-  //     content: content,
-  //   },
-  // });
   await prisma.$disconnect();
   
 
