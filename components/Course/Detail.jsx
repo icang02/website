@@ -2,7 +2,6 @@ import Breadcrumb from "../Breadcrumb";
 import PartDetail from "./PartDetail";
 
 export default function Detail({ courses }) {
-  // console.log(courses);
 
   return (
     <div className="pt-[88px] px-4 pb-0">

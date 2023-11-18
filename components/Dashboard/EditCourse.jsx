@@ -10,9 +10,9 @@ import { useParams, useRouter } from "next/navigation";
 
 const EditCourse = () => {
   const params = useParams();
+  const router = useRouter();
   const { id } = params;
 
-  const router = useRouter();
 
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,6 @@ const EditCourse = () => {
       const course = res.data;
 
       setData(course);
-      // console.log(course);
     };
 
     fetchData();
@@ -41,7 +40,7 @@ const EditCourse = () => {
       title: Yup.string().required("Fields is required"),
       description: Yup.string().required("Fields is required"),
     }),
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values) => {
       const data = {
         title: values.title,
         description: values.description,
@@ -52,11 +51,10 @@ const EditCourse = () => {
         setLoading(true);
 
         const res = await axios.put(`${process.env.APP_URL}/api/courses/update/${id}`, data);
-        // console.log(res.data);
         
+        toast("Berhasil update data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
+        router.refresh();
         router.push(`/dashboard/courses`)
-        // toast("Berhasil update data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
-        
       } catch (error) {
         console.log("Error info : " + error);
         toast("Gagal update data", { type: "error", hideProgressBar: true, transition: Slide, autoClose: 3000 });

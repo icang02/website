@@ -59,7 +59,7 @@ export default function PartDetail({ courses }) {
         <div className="px-0.5">
           {parse(coursePart.content ?? courses.course_part[0].content)}
 
-          <h1 className="text-2xl font-bold mb-4">Instalasi Laravel</h1>
+          {/* <h1 className="text-2xl font-bold mb-4">Instalasi Laravel</h1>
           <h2 className="text-xl font-bold mb-4">Instalasi Laravel</h2>
           <h3 className="text-lg font-bold mb-4">Instalasi Laravel</h3>
           <h4 className="text-base font-bold mb-4">Instalasi Laravel</h4>
@@ -76,7 +76,7 @@ export default function PartDetail({ courses }) {
             <li className="pl-1">Lorem, ipsum dolor.</li>
             <li className="pl-1">Lorem, ipsum.</li>
             <li className="pl-1">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</li>
-          </ol>
+          </ol> */}
         </div>
 
         <div className="mt-7 flex justify-end">

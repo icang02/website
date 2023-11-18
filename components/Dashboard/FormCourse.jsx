@@ -1,21 +1,19 @@
+"use client";
 import { useFormik } from "formik";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import * as Yup from "yup";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
-import { Slide, ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useParams } from "next/navigation";
+import { Slide, toast } from "react-toastify";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
-export default function FormCourse({ setReload }) {
-  const params = useParams();
-  const { id } = params;
+export default function FormCourse({ courseId }) {
+  const router = useRouter();
 
   const [content, setContent] = useState("");
-  // const [loading, setLoading] = useState(false);
 
-  // HANDLE LOGIN FORM
+  // HANDLE CREATE DATA
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -27,19 +25,19 @@ export default function FormCourse({ setReload }) {
     }),
     onSubmit: async (values) => {
       const data = {
-        courses_id: id,
+        courses_id: courseId,
         title: values.title,
         order: values.order,
         content: content,
       };
 
       try {
-        await axios.post(`${process.env.APP_URL}/api/courses/id/${id}/create`, data);
+        await axios.post(`${process.env.APP_URL}/api/courses/id/${courseId}/create`, data);
         toast("Berhasil menambahkan data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
 
-        formik.resetForm();
         setContent("");
-        setReload(prev => !prev);
+        formik.resetForm();
+        router.refresh();
       } catch (error) {
         console.log("Error info : " + error);
         toast("Gagal menambahkan", { type: "error", hideProgressBar: true, transition: Slide, autoClose: 3000 });
@@ -48,8 +46,7 @@ export default function FormCourse({ setReload }) {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <ToastContainer />
+    <form onSubmit={formik.handleSubmit} className="w-full">
       <p className="font-bold mb-3 text-center">Form Course Part</p>
       <div className="mb-3">
         <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-600">
@@ -88,7 +85,9 @@ export default function FormCourse({ setReload }) {
         <button
           type="submit"
           disabled={formik.isSubmitting}
-          className={`${formik.isSubmitting ? "opacity-80 cursor-not-allowed" : "hover:bg-blue-600"} text-sm md:text-base mt-3 bg-blue-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
+          className={`${
+            formik.isSubmitting ? "opacity-80 cursor-not-allowed" : "hover:bg-blue-600"
+          } text-sm md:text-base mt-3 bg-blue-500 rounded px-3 py-2 text-white font-bold outline-none transition-all `}
         >
           Add Part
         </button>

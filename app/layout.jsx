@@ -1,6 +1,8 @@
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { AuthProvider } from "./providers";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: process.env.APP_NAME,
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="font-worksans">
+        <ToastContainer />
         <NextTopLoader showSpinner={false} />
         <AuthProvider>{children}</AuthProvider>
       </body>

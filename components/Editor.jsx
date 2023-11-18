@@ -6,9 +6,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const Editor = () => {
-  // const [content, setContent] = useState("");
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   // HANDLE LOGIN FORM
@@ -36,6 +37,7 @@ const Editor = () => {
         toast("Berhasil menambahkan data!", { hideProgressBar: true, transition: Slide, autoClose: 2000 });
 
         resetForm();
+        router.refresh();
       } catch (error) {
         console.log("Error info : " + error);
         toast("Gagal menambahkan", { type: "error", hideProgressBar: true, transition: Slide, autoClose: 3000 });
