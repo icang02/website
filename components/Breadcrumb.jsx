@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Breadcrumb({ title }) {
   return (
-    <div className="px-4 border border-gray-200 rounded-lg bg-gray-50">
+    <div className="md:mt-3 px-4 border border-gray-300 rounded-lg bg-gray-50">
       <nav className="overflow-x-scroll no-scrollbar flex py-3 text-gray-700 ">
         <ol className="inline-flex item-center space-x-1">
           <li className="inline-flex items-center">
             <Link
               href="/"
-              className="inline-flex items-center text-xs font-medium text-gray-700 hover:text-blue-500"
+              className="inline-flex items-center text-xs md:text-sm font-medium text-gray-700 hover:text-blue-500"
             >
               <svg
                 className="w-3 h-3 me-2.5"
@@ -41,7 +41,7 @@ export default function Breadcrumb({ title }) {
               </svg>
               <Link
                 href="/belajar"
-                className="ms-1 text-xs font-medium text-gray-700 hover:text-blue-500 md:ms-2"
+                className="ms-1 text-xs md:text-sm font-medium text-gray-700 hover:text-blue-500 md:ms-2"
               >
                 Belajar
               </Link>
@@ -64,7 +64,7 @@ export default function Breadcrumb({ title }) {
                   d="m1 9 4-4-4-4"
                 />
               </svg>
-              <span className="ms-1 text-xs font-medium text-gray-500">
+              <span className="ms-1 text-xs md:text-sm font-medium text-gray-500">
                 {title}
               </span>
             </div>

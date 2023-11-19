@@ -2,15 +2,15 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-b from-[#ffffff] to-[#d1dced] px-4 pt-16 pb-4">
-      <div className="flex flex-col">
-        <div>
+    <footer className="w-full bg-gradient-to-b from-[#ffffff] to-[#d1dced] px-4 pt-16 pb-4 md:pb-6">
+      <div className="flex flex-col md:flex-row max-w-6xl mx-auto">
+        <div className="md:w-2/3">
           <div className="flex items-center gap-1.5">
             <img src="/logo.png" alt="logo.png" width={30} />
-            <span className="text-lg font-black text-blue-500">INTI KODE</span>
+            <span className="text-lg font-black text-blue-500">CODING POINT</span>
           </div>
 
-          <div className="mt-4 text-sm text-gray-500 flex gap-x-3 gap-y-2 flex-wrap">
+          <div className="mt-4 text-sm md:text-base text-gray-500 flex gap-x-3 gap-y-2 flex-wrap max-w-2xl">
             <Link
               className="hover:text-blue-500 hover:font-bold transition-all"
               href={"/"}
@@ -81,8 +81,8 @@ export default function Footer() {
         </div>
 
         {/* FORM FOOTER */}
-        <div className="mt-10">
-          <p className="mb-3 font-medium text-gray-600 text-sm">
+        <div className="mt-10 md:w-1/3">
+          <p className="mb-3 font-medium text-gray-600 text-sm md:text-base">
             Join Our Newsletter
           </p>
           <form>
@@ -99,8 +99,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-12 flex flex-col gap-2">
-        <div className="flex gap-3 text-sm text-gray-500 mx-auto">
+      <div className="mt-12 flex flex-col md:flex-row gap-2 max-w-6xl mx-auto">
+        <div className="justify-center flex gap-3 text-sm md:text-base text-gray-700 w-full">
           <Link
             className="hover:text-blue-500 hover:font-bold transition-all"
             href={"/"}
@@ -120,13 +120,14 @@ export default function Footer() {
             Cookies
           </Link>
         </div>
-        <p className="text-center font-medium text-gray-600 text-sm">
+
+        <div className="text-center font-medium text-gray-600 text-sm w-full text-center">
           @ {new Date().getFullYear()}{" "}
           <Link href={"/"} className="font-bold text-blue-500">
             Inti Kode
           </Link>
           . All rights reserved.
-        </p>
+        </div>
       </div>
     </footer>
   );
