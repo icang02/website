@@ -50,3 +50,7 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.jodit-status-bar-link {
+  display: none;
+}
