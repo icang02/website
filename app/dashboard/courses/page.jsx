@@ -1,13 +1,25 @@
 import Link from "next/link";
 import TableItem from "./TableItem";
+import prisma from "@/lib/prisma";
 
 export const metadata = {
   title: `${process.env.APP_NAME} | Dashboard Courses`,
 };
 
 export default async function DashboardCourses() {
-  const res = await fetch(`${process.env.APP_URL}/api/courses`, {cache: 'no-store'});
-  const courses = await res.json();
+  // const res = await fetch(`${process.env.APP_URL}/api/courses`, {cache: 'no-store'});
+  // const courses = await res.json();
+
+  const courses = await prisma.courses.findMany({
+    include: {
+      course_part: {
+        select: {
+          courses_id: true,
+        },
+      },
+    }
+  });
+  await prisma.$disconnect();
 
   return (
     <div className="px-3 md:px-44 pt-16 pb-20">

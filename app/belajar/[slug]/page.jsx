@@ -1,14 +1,31 @@
 import Detail from "@/components/Course/Detail";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
+import prisma from "@/lib/prisma";
 
 export const metadata = {
   title: process.env.APP_NAME + " | Course",
 };
 
 export default async function Page({ params: { slug } }) {
-  const res = await fetch(`${process.env.APP_URL}/api/courses/${slug}`, { cache: "no-store" });
-  const courses = await res.json();
+  const courses = await prisma.courses.findFirst({
+    where: {
+      slug: slug,
+    },
+    include: {
+      course_part: {
+        orderBy: {
+          order: "asc",
+        },
+        select: {
+          order: true,
+          title: true,
+          content: true
+        },
+      },
+    },
+  });
+  await prisma.$disconnect()
 
   return (
     <>

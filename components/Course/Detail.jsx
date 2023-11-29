@@ -17,7 +17,7 @@ export default function Detail({ courses }) {
 
             <div className="md:py-5 md:px-8">
               <div className="px-0.5">
-                <h6 className="font-bold leading-6 mt-5 text-base md:text-3xl">{courses.title}</h6>
+                <h6 className="font-bold leading-6 mt-5 text-base md:text-2xl">{courses.title}</h6>
                 <p className="mt-5 text-p text-sm leading-6 md:text-base md:leading-7">{courses.description}</p>
               </div>
 

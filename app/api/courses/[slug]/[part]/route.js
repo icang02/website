@@ -1,3 +1,4 @@
+// API CHANGE COURSE PART WHEN CLICK
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 

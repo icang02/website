@@ -39,9 +39,9 @@ export default function TableItem({ courses }) {
               <th scope="col" className="px-6 py-3">
                 Judul
               </th>
-              <th scope="col" className="px-6 py-3">
+              {/* <th scope="col" className="px-6 py-3">
                 Deskripsi
-              </th>
+              </th> */}
               <th scope="col" className="px-6 py-3 text-center">
                 Jumlah Part
               </th>
@@ -66,7 +66,7 @@ export default function TableItem({ courses }) {
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 md:whitespace-nowrap border">
                     {item.title}
                   </th>
-                  <td className="px-6 py-4">{item.description}</td>
+                  {/* <td className="px-6 py-4">{item.description}</td> */}
                   <td className="px-6 py-4 text-center">{item.course_part.length}</td>
                   <td className="px-6 py-4 flex gap-0 flex-col md:gap-1 md:flex-row items-center justify-center">
                     <Link

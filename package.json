@@ -1,11 +1,12 @@
 {
-  "name": "intikoding",
+  "name": "codingpoint",
   "version": "0.1.0",
   "private": true,
+  "homepage": " https://codingpoint.webaku.biz.id",
   "scripts": {
     "dev": "next dev",
     "build": "npx prisma generate && next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {

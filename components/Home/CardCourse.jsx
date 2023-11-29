@@ -1,18 +1,27 @@
+import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 export default async function CardCourse() {
-  const res = await fetch(`${process.env.APP_URL}/api/courses`, { cache: "no-store" });
-  const data = await res.json();
+  const data = await prisma.courses.findMany({
+    include: {
+      course_part: {
+        select: {
+          courses_id: true,
+        },
+      },
+    },
+  });
+  await prisma.$disconnect();
 
   function limitText(inputText, maxLength) {
     if (inputText.length > maxLength) {
-        return inputText.substring(0, maxLength) + "...";
+      return inputText.substring(0, maxLength) + "...";
     } else {
-        return inputText;
+      return inputText;
     }
-}
+  }
 
   return (
     <div className="pt-10 pb-16 px-4 max-w-6xl mx-auto">
@@ -54,7 +63,7 @@ export default async function CardCourse() {
         )}
       </div>
 
-      {data.length != 0 && (
+      {data.length > 0 && (
         <div className="mt-5 flex justify-end">
           <a
             href={"/"}

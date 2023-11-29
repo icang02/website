@@ -4,10 +4,10 @@ export const metadata = {
   title: process.env.APP_NAME + " | Edit Course",
 };
 
-export default function DashbordEditCourse() {
+export default function DashbordEditCourse({ params: { id } }) {
   return (
     <>
-      <EditCourse />
+      <EditCourse id={id} />
     </>
   );
 }
