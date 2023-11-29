@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { addClass } from "@/lib/addClass";
 const prisma = new PrismaClient();
 
 export const dynamic = "force-dynamic";
